@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Shopee|RegisterProduct{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="row">
+        <center>
+            <h2>My Products</h2>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Sr.No</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Photo</th>
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                <tr>
+                    {% for x in myproducts %}
+                    <td>{{forloop.counter}}</td>
+                    <td>{{x.productid}}</td>
+                    <td>{{x.productname}}</td>
+                    <td>{{x.category}}</td>
+                    <td>{{x.desc}}</td>
+                    <td>{{x.price}}</td>
+                    <td>
+                        <img src="{{x.photos.url}}" atl="{{x.productname}}" width="80px" height="90px">
+                    </td>
+                    <td><a href="/updateregisterproduct/{{x.productid}}">Update</a></td>
+                    <td><a href="/removeregisterproduct/{{x.productid}}">Remove</a></td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </center>
+    </div>
+    </div>
+{% endblock %}
